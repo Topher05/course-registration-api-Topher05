@@ -1,1 +1,1 @@
-first commit
+# course-registration-api
