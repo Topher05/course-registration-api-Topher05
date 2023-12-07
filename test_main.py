@@ -8,17 +8,28 @@ from student import stds
 client = TestClient(app)
 
 def test_get_stdCourses(studentA):
+    courses.append(courseA)
+    courses.append(courseB)
+
     studentA.addCourse(courseB)
     stds [studentA._IED] = studentA
     response = client.get("/stdCourses/1")
     assert response.status_code == 200
     assert response.json() == [
-            ["COSC", "176", 30, "John Moe", 
-        "Programming II", "PH 503", "TH 12:00"]
-    ]
+            {
+                '_prefix': 'COSC',
+                '_course_number': '176',
+                '_cap': 30,
+                '_instructor': 'John Moe', 
+                '_name': 'Programming II', 
+                '_place': 'PH 503', 
+                '_meeting_times': 'TH 12:00'
+            }]
+    courses.clear()
+
 def test_get_courses(courseA):
     courses.append(courseA)
-    print(courses)
+    print(courseA)
     response = client.get("/courses/COSC")
     assert response.status_code == 200
     assert response.json() == [

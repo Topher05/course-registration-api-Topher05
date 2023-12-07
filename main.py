@@ -9,6 +9,7 @@ app = FastAPI()
 def get_courses(prefix: str):
     # return all the courses under the prefix
     results = []
+    #print(courses)
     for course in courses:
         if course.is_prefix(prefix):
             results.append(course)
